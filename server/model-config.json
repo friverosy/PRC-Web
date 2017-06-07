@@ -37,5 +37,21 @@
   },
   "Message": {
     "dataSource": null
+  },
+  "pda": {
+    "dataSource": "db",
+    "public": false
+  },
+  "company": {
+    "dataSource": "db",
+    "public": false
+  },
+  "point": {
+    "dataSource": "db",
+    "public": false
+  },
+  "register": {
+    "dataSource": "db",
+    "public": true
   }
 }
