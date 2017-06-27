@@ -53,5 +53,9 @@
   "register": {
     "dataSource": "db",
     "public": true
+  },
+  "person": {
+    "dataSource": "peopleDS",
+    "public": true
   }
 }

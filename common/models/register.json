@@ -7,24 +7,28 @@
     "validateUpsert": true
   },
   "properties": {
-    "rut": {
-      "type": "string",
-      "required": true
-    },
-    "name": {
+    "dni": {
       "type": "string"
     },
     "date": {
-      "type": "date",
+      "type": "number",
       "required": true
     },
     "pda": {
       "type": "string",
-      "required": true
+      "required": true,
+      "description": "PDA Serial Number"
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "person": {
+      "type": "belongsTo",
+      "model": "person",
+      "foreignKey": "person",
+      "primaryKey": "dni"
+    }
+  },
   "acls": [],
   "methods": {}
 }

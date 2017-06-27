@@ -2,5 +2,41 @@
   "db": {
     "name": "db",
     "connector": "memory"
+  },
+  "peopleDS": {
+    "name": "peopleDS",
+    "connector": "rest",
+    "operations": [
+      {
+        "template": {
+          "method": "GET",
+          "url": "http://localhost:3001/api/people",
+          "form": {
+            "dni": "{dni}"
+          }
+        },
+        "functions": {
+          "find": [
+            "dni"
+          ]
+        }
+      },
+      {
+        "template": {
+          "method": "POST",
+          "url": "http://localhost:3001/api/people",
+          "form": {
+            "dni": "{dni}",
+            "name": "{name}"
+          }
+        },
+        "functions": {
+          "new": [
+            "dni",
+            "name"
+          ]
+        }
+      }
+    ]
   }
 }
