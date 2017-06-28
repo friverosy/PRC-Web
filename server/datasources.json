@@ -10,13 +10,13 @@
       {
         "template": {
           "method": "GET",
-          "url": "http://localhost:3001/api/people",
+          "url": "http://localhost:3001/api/people/getName?dni={dni}",
           "form": {
             "dni": "{dni}"
           }
         },
         "functions": {
-          "find": [
+          "getName": [
             "dni"
           ]
         }
