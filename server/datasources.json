@@ -10,7 +10,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "http://localhost:3001/api/people/getName?dni={dni}",
+          "url": "http://104.41.54.7:8000/api/people/getName",
           "form": {
             "dni": "{dni}"
           }
@@ -24,7 +24,7 @@
       {
         "template": {
           "method": "POST",
-          "url": "http://localhost:3001/api/people",
+          "url": "http://104.41.54.7:8000/api/people",
           "form": {
             "dni": "{dni}",
             "name": "{name}"
@@ -38,5 +38,15 @@
         }
       }
     ]
+  },
+  "mongoDS": {
+    "host": "localhost",
+    "port": 27017,
+    "url": "mongodb://localhost/prc",
+    "database": "prc",
+    "password": "",
+    "name": "mongoDS",
+    "user": "",
+    "connector": "mongodb"
   }
 }
