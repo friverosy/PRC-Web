@@ -1,0 +1,22 @@
+{
+  "name": "chilean",
+  "base": "Model",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "dni": {
+      "type": "string",
+      "required": true,
+      "default": "0"
+    },
+    "name": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

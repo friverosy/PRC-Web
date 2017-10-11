@@ -15,7 +15,18 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "company": {
+      "type": "belongsTo",
+      "model": "company",
+      "foreignKey": ""
+    },
+    "registers": {
+      "type": "hasMany",
+      "model": "register",
+      "foreignKey": ""
+    }
+  },
   "acls": [],
   "methods": {}
 }

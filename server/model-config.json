@@ -35,26 +35,27 @@
     "dataSource": "db",
     "public": false
   },
-  "Message": {
-    "dataSource": null
-  },
   "pda": {
-    "dataSource": "db",
-    "public": false
+    "dataSource": "mongoDS",
+    "public": true
   },
   "company": {
-    "dataSource": "db",
-    "public": false
+    "dataSource": "mongoDS",
+    "public": true
   },
   "point": {
-    "dataSource": "db",
-    "public": false
+    "dataSource": "mongoDS",
+    "public": true
   },
   "register": {
-    "dataSource": "db",
+    "dataSource": "mongoDS",
     "public": true
   },
   "person": {
+    "dataSource": "mongoDS",
+    "public": true
+  },
+  "chilean": {
     "dataSource": "peopleDS",
     "public": true
   }
