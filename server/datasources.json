@@ -10,10 +10,15 @@
       {
         "template": {
           "method": "GET",
-          "url": "http://104.41.54.7:8000/api/people/getName",
-          "form": {
+          "url": "http://104.41.54.7:8000/api/people/getName?dni={dni}",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "query": {
             "dni": "{dni}"
-          }
+          },
+          "responsePath": ""
         },
         "functions": {
           "getName": [
@@ -40,13 +45,13 @@
     ]
   },
   "mongoDS": {
-    "host": "localhost",
-    "port": 27017,
-    "url": "mongodb://localhost/prc",
+    "host": "axxezodb.documents.azure.com",
+    "port": 10255,
+    "url": "mongodb://axxezodb:OHO7eBCZFRx6LJObtemhHQvEn7Xy0WK3xuKrpc19ANZ7O7Z1knSKRXveoQ1mvPvcWa1dPI1FMwpKxBbhQEmU0Q==@axxezodb.documents.azure.com:10255/prc?ssl=true&authSource=admin",
     "database": "prc",
-    "password": "",
+    "password": "OHO7eBCZFRx6LJObtemhHQvEn7Xy0WK3xuKrpc19ANZ7O7Z1knSKRXveoQ1mvPvcWa1dPI1FMwpKxBbhQEmU0Q==",
     "name": "mongoDS",
-    "user": "",
+    "user": "axxezodb",
     "connector": "mongodb"
   }
 }
