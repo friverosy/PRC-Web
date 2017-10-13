@@ -1,0 +1,112 @@
+var async = require('async');
+module.exports = function (app) {
+  //data sources
+  var mongoDs = app.dataSources.mongoDS; // 'name' of your mongo connector, you can find it in datasource.json
+  //create all models
+  async.parallel({
+    operators: async.apply(createOperators),
+    points: async.apply(createPoints),
+  }, function (err, results) {
+    if (err) throw err;
+    createRegisters(results.operators, results.points, function (err) {
+      if (err) console.error(err);
+    });
+    updateOperators(results.points, function (err) {
+      if (err) console.error(err);
+    });
+  });
+  //create pointsoperators, 
+  function createPoints(cb) {
+    mongoDs.automigrate('point', function (err) {
+      if (err) return cb(err);
+      var Point = app.models.Point;
+      Point.create([{
+        name: 'Bel Cafe',
+        companyId: '59dceb719fffd17753d2c572'
+      }, {
+        name: 'Three Bees Coffee House',
+        companyId: '59dceb719fffd17753d2c572'
+      }, {
+        name: 'Caffe Artigiano',
+        companyId: '59dceb719fffd17753d2c572'
+      },], cb);
+    });
+  }
+  //create operators
+  function createOperators(cb) {
+    mongoDs.automigrate('operator', function (err) {
+      if (err) return cb(err);
+      var Operator = app.models.Operator;
+      Operator.create([{
+        pointId: '',
+        email: 'foo@bar.com',
+        password: 'foobar'
+      }, {
+        pointId: '',
+        email: 'john@doe.com',
+        password: 'johndoe'
+      }, {
+        pointId: '',
+        email: 'jane@doe.com',
+        password: 'janedoe'
+      }], cb);
+    });
+  } 
+  //create registers
+  function createRegisters(operators, points, cb) {
+    mongoDs.automigrate('register', function (err) {
+      if (err) return cb(err);
+      var Register = app.models.Register;
+      var DAY_IN_MILLISECONDS = 1000 * 60 * 60 * 24;
+      Register.create([{
+        time: Date.now() - (DAY_IN_MILLISECONDS * 4),
+        comment: 'A very good coffee shop.',
+        operatorId: operators[0].id,
+        dni: "9402572-9",
+        pointId: points[0].id,
+        pdaId: '59dcf7a15567eb7a1130c57c'
+      }, {
+        time: Date.now() - (DAY_IN_MILLISECONDS * 3),
+        comment: 'Quite pleasant.',
+        operatorId: operators[1].id,
+        dni: "9402572-9",
+        pointId: points[0].id,
+        pdaId: '59dcf7a15567eb7a1130c57c'
+      }, {
+        time: Date.now() - (DAY_IN_MILLISECONDS * 2),
+        comment: 'It was ok.',
+        operatorId: operators[1].id,
+        dni: "9402572-9",
+        pointId: points[1].id,
+        pdaId: '59dcf7a15567eb7a1130c57c'
+      }, {
+        time: Date.now() - (DAY_IN_MILLISECONDS),
+        comment: 'I go here everyday.',
+        operatorId: operators[2].id,
+        dni: "9402572-9",
+        pointId: points[2].id,
+        pdaId: '59dcf7a15567eb7a1130c57c'
+      }], cb);
+    });
+  }
+  //update operators
+  function updateOperators(points, cb) {
+    mongoDs.automigrate('operator', function (err) {
+      if (err) return cb(err);
+      var Operator = app.models.Operator;
+      Operator.create([{
+        pointId: points[0].id,
+        email: 'foo@bar.com',
+        password: 'foobar'
+      }, {
+        pointId: points[0].id,
+        email: 'john@doe.com',
+        password: 'johndoe'
+      }, {
+        pointId: points[0].id,
+        email: 'jane@doe.com',
+        password: 'janedoe'
+      }], cb);
+    });
+  }
+};
