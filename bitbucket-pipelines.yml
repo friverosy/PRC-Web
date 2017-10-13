@@ -1,0 +1,28 @@
+# Autor: Cristtopher Quintana T. <cquintana@axxezo.com>
+image: node:boron
+
+pipelines:
+  default:
+    - step:
+        caches:
+          - node
+        script:
+          - npm install
+          #- npm test
+  branches:
+    master:
+      - step:
+         caches:
+           - node
+         script:
+          - npm install
+          #- npm test
+          - docker login $CONTAINER_REGISTRY_URI -u $CONTAINER_REGISTRY_USERNAME -p $CONTAINER_REGISTRY_PASSWORD
+          - apt-get update
+          - apt-get install -y jq
+          - declare -x VERSION=$(jq -r '.version' package.json)
+          - docker build -t $CONTAINER_REGISTRY_URI/$IMAGE_NAME:$VERSION -t $CONTAINER_REGISTRY_URI/$IMAGE_NAME:latest .
+          - docker push $CONTAINER_REGISTRY_URI/$IMAGE_NAME:$VERSION
+          - docker push $CONTAINER_REGISTRY_URI/$IMAGE_NAME:latest
+options:
+  docker: true
