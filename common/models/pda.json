@@ -21,7 +21,13 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "point": {
+      "type": "belongsTo",
+      "model": "point",
+      "foreignKey": ""
+    }
+  },
   "acls": [],
   "methods": {}
 }

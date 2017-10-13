@@ -3,7 +3,7 @@
 <!-- ============================================================== -->
 <div class="row page-titles">
     <div class="col-md-5 align-self-center">
-        <h3 class="text-themecolor">Bitácora</h3>
+        <h3 class="text-themecolor">Bitácora <small>PresenceControl</small></h3>
     </div>
     <div class="col-md-7 align-self-center">
         <ol class="breadcrumb">
@@ -44,15 +44,22 @@
                                                     <th>Nombre</th>
                                                     <th>PDA</th>
                                                     <th>Fecha</th>
+                                                    <th>Comentario</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>Nigam</td>
-                                                    <td>Eichmann</td>
-                                                    <td><span class="label label-warning">1</span></td>
-                                                    <td>@Sonu</td>
+                                                <tr ng-repeat="r in registers">
+                                                    <td>{{ $index + 1 }}</td>
+                                                    <td>{{r.dni}}</td>
+                                                    <td>{{r.person.name}}</td>
+                                                    <td><span class="label label-warning">{{r.pda.description}}</span></td>
+                                                    <td>{{r.time | date:'dd/MM HH:mm:ss.sss'}}</td>
+                                                    <td>
+                                                        <input type="text" 
+                                                               ng-model="r.comment" 
+                                                               ng-change="update(r)" 
+                                                               class="form-control">
+                                                    </td>
                                                 </tr>
                                             </tbody>
                                         </table>

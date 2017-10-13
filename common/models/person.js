@@ -1,6 +1,5 @@
 'use strict';
 
 module.exports = function(Person) {
-    Person.disableRemoteMethod('deleteById', true);
-    
+  Person.disableRemoteMethodByName('deleteById', true);
 };

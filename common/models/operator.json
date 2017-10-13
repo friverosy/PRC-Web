@@ -1,26 +1,32 @@
 {
-  "name": "person",
-  "plural": "people",
-  "base": "PersistedModel",
+  "name": "operator",
+  "plural": "operators",
+  "base": "User",
   "idInjection": true,
   "options": {
     "validateUpsert": true
   },
   "properties": {
-    "dni": {
+    "email": {
       "type": "string",
       "required": true
     },
-    "name": {
-      "type": "string"
+    "password": {
+      "type": "string",
+      "required": true
     }
   },
   "validations": [],
   "relations": {
+    "point": {
+      "type": "belongsTo",
+      "model": "point",
+      "foreignKey": ""
+    },
     "registers": {
       "type": "hasMany",
       "model": "register",
-      "foreignKey": "dni"
+      "foreignKey": ""
     }
   },
   "acls": [],
