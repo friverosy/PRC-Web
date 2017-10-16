@@ -10,6 +10,11 @@ RUN npm install
 
 # Bundle app source
 COPY . .
+
+# Define ENVs to setup at image build time
+ARG NODE_ENV
+ENV NODE_ENV ${NODE_ENV}
+
 EXPOSE 8000
 
 # change default user
