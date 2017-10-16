@@ -1,5 +1,5 @@
 {
-  "mongoDS": {
+  "db": {
     "name": "db",
     "connector": "memory"
   },
@@ -43,5 +43,15 @@
         }
       }
     ]
+  },
+  "mongoDS": {
+    "host": "localhost",
+    "port": 27017,
+    "url": "mongodb://localhost/prc",
+    "database": "prc",
+    "password": "OHO7eBCZFRx6LJObtemhHQvEn7Xy0WK3xuKrpc19ANZ7O7Z1knSKRXveoQ1mvPvcWa1dPI1FMwpKxBbhQEmU0Q==",
+    "name": "mongoDS",
+    "user": "axxezodb",
+    "connector": "mongodb"
   }
 }
